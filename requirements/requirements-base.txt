@@ -1,2 +1,1 @@
-Django>=1.7
 djangorestframework>=3.3
