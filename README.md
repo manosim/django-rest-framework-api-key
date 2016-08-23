@@ -1,4 +1,4 @@
-# django-rest-framework-api-key [![travis][travis-image]][travis-url] [![pypi][pypi-image]][pypi-url]
+# django-rest-framework-api-key [![travis][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url] [![pypi][pypi-image]][pypi-url]
 Authenticate Web APIs made with Django REST Framework
 
 
@@ -46,5 +46,8 @@ response = requests.get(
 [travis-image]: https://travis-ci.org/ekonstantinidis/django-rest-framework-api-key.svg?branch=master
 [travis-url]: https://travis-ci.org/ekonstantinidis/django-rest-framework-api-key
 
-[pypi-image]: https://badge.fury.io/py/django-rest-framework-api-key.svg
-[pypi-url]: https://pypi.python.org/pypi/django-rest-framework-api-key/
+[codecov-image]: https://codecov.io/github/ekonstantinidis/django-rest-framework-api-key/coverage.svg?branch=master
+[codecov-url]:https://codecov.io/github/ekonstantinidis/django-rest-framework-api-key?branch=master
+
+[pypi-image]: https://badge.fury.io/py/drfapikey.svg
+[pypi-url]: https://pypi.python.org/pypi/drfapikey/
