@@ -35,12 +35,30 @@ Finally set the django-rest-framework permissions under your django settings:
 
 ```python
 response = requests.get(
-    url="http://uhs-api.ctf.sh:8080/catalogue/categories/",
+    url="http://0.0.0.0:8000/api/login",
     headers={
         "Api-Key": "fd8b4a98c8f53035aeab410258430e2d86079c93",
     },
 )
 ```
+
+
+### Tests
+    
+    pyvenv env
+    source env/bin/activate
+    pip install -r requirements/requirements-testing.txt
+    python runtests.py
+
+
+### Contributing
+
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request
+6. Make sure tests are passing
 
 
 [travis-image]: https://travis-ci.org/ekonstantinidis/django-rest-framework-api-key.svg?branch=master
