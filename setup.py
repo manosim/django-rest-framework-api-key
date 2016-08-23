@@ -1,0 +1,32 @@
+from setuptools import find_packages, setup
+
+setup(
+    name='drfapikey',
+    version=__import__('rest_framework_api_key').__version__,
+    author="Emmanouil Konstantinidis",
+    author_email="manos@iamemmanouil.com",
+    packages=find_packages(),
+    include_package_data=True,
+    url="https://github.com/ekonstantinidis/django-rest-framework-api-key",
+    license='BSD',
+    description="Authenticate Web APIs made with Django REST Framework",
+    long_description=open("README.md").read(),
+    install_requires=[],
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "Environment :: Web Environment",
+        "Framework :: Django",
+        "Framework :: Django :: 1.7",
+        "Framework :: Django :: 1.8",
+        "Framework :: Django :: 1.9",
+        "License :: OSI Approved :: BSD License",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.2",
+        "Programming Language :: Python :: 3.3",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Framework :: Django",
+    ],
+)
