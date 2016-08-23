@@ -22,6 +22,26 @@ Add 'rest_framework_api_key' to your `INSTALLED_APPS` setting:
         'rest_framework_api_key',
     )
 
+Finally set the django-rest-framework permissions under your django settings:
+
+    REST_FRAMEWORK = {
+        'DEFAULT_PERMISSION_CLASSES': (
+            'rest_framework_api_key.permissions.HasAPIAccess',
+        )
+    }
+
+
+### Example Request
+
+```python
+response = requests.get(
+    url="http://uhs-api.ctf.sh:8080/catalogue/categories/",
+    headers={
+        "Api-Key": "fd8b4a98c8f53035aeab410258430e2d86079c93",
+    },
+)
+```
+
 
 [travis-image]: https://travis-ci.org/ekonstantinidis/django-rest-framework-api-key.svg?branch=master
 [travis-url]: https://travis-ci.org/ekonstantinidis/django-rest-framework-api-key

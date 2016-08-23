@@ -2,10 +2,10 @@ from django.test import TestCase
 from rest_framework_api_key.models import APIKey
 
 
-class APIKeyAdminTestCase(TestCase):
+class ModelTestCase(TestCase):
 
     def setUp(self):
-        super(APIKeyAdminTestCase, self).setUp()
+        super(ModelTestCase, self).setUp()
 
     def test_admin_create_object(self):
         self.assertEqual(APIKey.objects.all().count(), 0)

@@ -27,6 +27,10 @@ cache:
 
 install:
   - pip install tox
+  - pip install codecov
 
 script:
   - tox -e $TOX_ENV
+
+after_success:
+  - codecov
