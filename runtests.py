@@ -5,7 +5,7 @@ import pytest
 
 
 FLAKE8_ARGS = ['rest_framework_api_key', 'tests/', '--ignore=E501']
-PYTEST_ARGS = ['tests', '--tb=short', '-s', '-rw']
+PYTEST_ARGS = ['tests', '--cov=rest_framework_api_key', '--tb=short']
 
 
 def exit_on_failure(command, message=None):
