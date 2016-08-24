@@ -1,5 +1,11 @@
 import uuid
 from django.db import models
+from django.apps import AppConfig
+
+
+class APIKeyConfig(AppConfig):
+    name = 'rest_framework_api_key'
+    verbose_name = "Authentication"
 
 
 class APIKey(models.Model):
