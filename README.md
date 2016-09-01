@@ -61,11 +61,11 @@ response = requests.get(
 6. Make sure tests are passing
 
 
-[travis-image]: https://travis-ci.org/ekonstantinidis/django-rest-framework-api-key.svg?branch=master
-[travis-url]: https://travis-ci.org/ekonstantinidis/django-rest-framework-api-key
+[travis-image]: https://travis-ci.org/manosim/django-rest-framework-api-key.svg?branch=master
+[travis-url]: https://travis-ci.org/manosim/django-rest-framework-api-key
 
-[codecov-image]: https://codecov.io/github/ekonstantinidis/django-rest-framework-api-key/coverage.svg?branch=master
-[codecov-url]:https://codecov.io/github/ekonstantinidis/django-rest-framework-api-key?branch=master
+[codecov-image]: https://codecov.io/github/manosim/django-rest-framework-api-key/coverage.svg?branch=master
+[codecov-url]:https://codecov.io/github/manosim/django-rest-framework-api-key?branch=master
 
 [pypi-image]: https://badge.fury.io/py/drfapikey.svg
 [pypi-url]: https://pypi.python.org/pypi/drfapikey/
