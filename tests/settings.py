@@ -63,3 +63,7 @@ TEMPLATES = [
         },
     },
 ]
+
+API_KEY_MIDDLEWARE_EXCLUDED_URL_PREFIXES = (
+    '/admin',
+)

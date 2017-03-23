@@ -1,6 +1,7 @@
 """
 Middleware verifying every request to the server passes the API key validation.
 """
+from django.conf import settings
 from django.core.exceptions import PermissionDenied
 
 from rest_framework_api_key.helpers import get_key_from_headers
@@ -43,6 +44,9 @@ class APIKeyMiddleware(object):
         :rtype: :class:`django.http.HttpResponse`
         """
         response = self.get_response(request)
+
+        if request.path.startswith(settings.API_KEY_MIDDLEWARE_EXCLUDED_URL_PREFIXES):
+            return response
 
         api_key = get_key_from_headers(request)
         if not self.is_key_valid(api_key):
