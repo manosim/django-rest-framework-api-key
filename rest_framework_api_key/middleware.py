@@ -8,6 +8,10 @@ from rest_framework_api_key.helpers import get_key_from_headers
 from rest_framework_api_key.models import APIKey
 
 
+# Loaded dynamically to handle cases where the settings variable is not defined.
+excluded_prefixes = getattr(settings, 'API_KEY_MIDDLEWARE_EXCLUDED_URL_PREFIXES', ())
+
+
 class APIKeyMiddleware(object):
     """
     A custom middleware to provide API key validation for all requests.
@@ -45,7 +49,7 @@ class APIKeyMiddleware(object):
         """
         response = self.get_response(request)
 
-        if request.path.startswith(settings.API_KEY_MIDDLEWARE_EXCLUDED_URL_PREFIXES):
+        if request.path.startswith(excluded_prefixes):
             return response
 
         api_key = get_key_from_headers(request)

@@ -1,6 +1,6 @@
+from django.core.urlresolvers import reverse
 from django.test import override_settings, modify_settings
 
-from django.core.urlresolvers import reverse
 from tests.test_admin import APIAuthenticatedTestCase
 
 
