@@ -19,6 +19,8 @@ setup(
         "Framework :: Django :: 1.7",
         "Framework :: Django :: 1.8",
         "Framework :: Django :: 1.9",
+        "Framework :: Django :: 1.10",
+        "Framework :: Django :: 1.11",
         "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 2.7",
