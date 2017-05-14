@@ -3,7 +3,7 @@ language: python
 sudo: false
 
 python:
-  - "3.5"
+  - "3.6"
 
 env:
   - TOX_ENV=py27-django18
@@ -23,7 +23,6 @@ env:
   - TOX_ENV=py35-django111
   - TOX_ENV=py36-django111
 
-  - TOX_ENV=py27-djangomaster
   - TOX_ENV=py34-djangomaster
   - TOX_ENV=py35-djangomaster
   - TOX_ENV=py36-djangomaster
