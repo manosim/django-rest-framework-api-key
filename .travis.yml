@@ -3,34 +3,20 @@ language: python
 sudo: false
 
 python:
+  - "2.7"
+  - "3.4"
   - "3.5"
-
-env:
-  - TOX_ENV=py27-django18
-  - TOX_ENV=py34-django18
-  - TOX_ENV=py35-django18
-
-  - TOX_ENV=py27-django19
-  - TOX_ENV=py34-django19
-  - TOX_ENV=py35-django19
-
-  - TOX_ENV=py27-django110
-  - TOX_ENV=py34-django110
-  - TOX_ENV=py35-django110
-
-  - TOX_ENV=py27-djangomaster
-  - TOX_ENV=py34-djangomaster
-  - TOX_ENV=py35-djangomaster
+  - "3.6"
 
 cache:
   - pip
 
 install:
-  - pip install tox
+  - pip install tox-travis
   - pip install codecov
 
 script:
-  - tox -e $TOX_ENV
+  - tox
 
 after_success:
   - codecov
