@@ -10,7 +10,7 @@ class APIMiddlewareTest(APIAuthenticatedTestCase):
         'DEFAULT_PERMISSION_CLASSES':
             ('rest_framework.permissions.AllowAny',),
     })
-    @modify_settings(MIDDLEWARE={
+    @modify_settings(MIDDLEWARE_CLASS={
         'prepend': 'rest_framework_api_key.middleware.APIKeyMiddleware'
     })
     def test_get_view_authorized(self):
@@ -23,7 +23,7 @@ class APIMiddlewareTest(APIAuthenticatedTestCase):
         'DEFAULT_PERMISSION_CLASSES':
             ('rest_framework.permissions.AllowAny',),
     })
-    @modify_settings(MIDDLEWARE={
+    @modify_settings(MIDDLEWARE_CLASS={
         'prepend': 'rest_framework_api_key.middleware.APIKeyMiddleware'
     })
     def test_get_view_unauthorized(self):
