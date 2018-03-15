@@ -42,10 +42,10 @@ class APIKeyMiddleware(object):
         :returns: The HTTP response.
         :rtype: :class:`django.http.HttpResponse`
         """
-        response = self.get_response(request)
-
         api_key = get_key_from_headers(request)
+        api_key_object = APIKey.objects.filter(key=api_key).first()
         if not self.is_key_valid(api_key):
             raise PermissionDenied('API key missing or invalid.')
 
-        return response
+        request.api_key = api_key_object
+        return self.get_response(request)
