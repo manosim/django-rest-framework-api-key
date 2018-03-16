@@ -12,15 +12,6 @@ class APIKeyMiddleware(object):
     A custom middleware to provide API key validation for all requests.
     """
 
-    def __init__(self, get_response):
-        """
-        The middleware initialization method.
-
-        :param get_response: The response rendering view.
-        :type get_response: function
-        """
-        self.get_response = get_response
-
     def is_key_valid(self, api_key):
         """
         A wrapper function around api key validation, to make the
@@ -33,7 +24,7 @@ class APIKeyMiddleware(object):
         """
         return APIKey.is_valid(api_key)
 
-    def __call__(self, request):
+    def process_request(self, request):
         """
         Middleware processing method, API key validation happens here.
 
@@ -48,4 +39,3 @@ class APIKeyMiddleware(object):
             raise PermissionDenied('API key missing or invalid.')
 
         request.api_key = api_key_object
-        return self.get_response(request)
