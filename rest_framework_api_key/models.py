@@ -18,6 +18,6 @@ class APIKey(models.Model):
     def __str__(self):
         return self.name
 
-    @classmethod
-    def is_valid(cls, api_key):
-        return cls.objects.filter(key=api_key).exists()
+    def is_valid(self, path):
+        print path
+        return True
