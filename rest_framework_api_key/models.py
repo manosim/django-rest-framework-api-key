@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+import re
 
 
 class APIKey(models.Model):
@@ -14,10 +15,11 @@ class APIKey(models.Model):
 
     name = models.CharField(max_length=50, unique=True)
     key = models.CharField(max_length=40, unique=True)
+    path_re = models.CharField(max_length=1024)
 
     def __str__(self):
         return self.name
 
     def is_valid(self, path):
-        print path
-        return True
+        pattern = re.compile(self.path_re)
+        return pattern.search(path)
