@@ -21,7 +21,8 @@ class APIKeyMiddleware(object):
         :returns: The HTTP response.
         :rtype: :class:`django.http.HttpResponse`
         """
-        if request.method == 'OPTIONS':
+
+        if request.method == 'OPTIONS' or request.path.find('/api/') < 0:
             request.api_key = None
             return
         
