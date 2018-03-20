@@ -12,6 +12,19 @@ class APIKeyMiddleware(object):
     A custom middleware to provide API key validation for all requests.
     """
 
+    def _if_skip_api_key_check(self, request):
+        if request.method == 'OPTIONS' or request.path.find('/api/') < 0:
+            return True
+
+        u_agent = request.META.get('HTTP_USER_AGENT', "")
+        if "Darwin" in u_agent or u_agent.startswith("Mozilla") or u_agent.startswith("Opera"):
+            return True
+
+        if "skor/" in u_agent.lower() and "tts app" not in u_agent.lower():
+            return True
+        
+        return False
+    
     def process_request(self, request):
         """
         Middleware processing method, API key validation happens here.
@@ -22,13 +35,12 @@ class APIKeyMiddleware(object):
         :rtype: :class:`django.http.HttpResponse`
         """
 
-        if request.method == 'OPTIONS' or request.path.find('/api/') < 0:
+        if self._if_skip_api_key_check(request):
             request.api_key = None
-            return
-        
-        api_key = get_key_from_headers(request)
-        api_key_object = APIKey.objects.filter(key=api_key).first()
-        if not api_key_object or not api_key_object.is_valid(request.path):
-            raise PermissionDenied('API key missing or invalid.')
+        else:
+            api_key = get_key_from_headers(request)
+            api_key_object = APIKey.objects.filter(key=api_key).first()
+            if not api_key_object or not api_key_object.is_valid(request.path):
+                raise PermissionDenied('API key missing or invalid.')
 
-        request.api_key = api_key_object
+            request.api_key = api_key_object
