@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='apikey',
             name='path_re',
-            field=models.CharField(default='*', max_length=1024),
+            field=models.CharField(default='.*', max_length=1024),
             preserve_default=False,
         ),
     ]
