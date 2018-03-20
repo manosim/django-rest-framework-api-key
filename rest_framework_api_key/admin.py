@@ -9,7 +9,7 @@ class ApiKeyAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Required Information', {'fields': ('name',)}),
-        ('Additional Information', {'fields': ('key_message',)}),
+        ('Additional Information', {'fields': ('key_message','path_re')}),
     )
     readonly_fields = ('key_message',)
 
