@@ -21,6 +21,10 @@ class APIKeyMiddleware(object):
         :returns: The HTTP response.
         :rtype: :class:`django.http.HttpResponse`
         """
+        if request.method == 'OPTIONS':
+            request.api_key = None
+            return
+        
         api_key = get_key_from_headers(request)
         api_key_object = APIKey.objects.filter(key=api_key).first()
         if not api_key_object or not api_key_object.is_valid(request.path):
