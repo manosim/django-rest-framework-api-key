@@ -8,4 +8,9 @@ class HasAPIAccess(permissions.BasePermission):
 
     def has_permission(self, request, view):
         api_key = get_key_from_headers(request)
-        return APIKey.is_valid(api_key)
+        api_key_object = APIKey.objects.filter(key=api_key).first()
+
+        if api_key_object:
+            return api_key_object.is_valid(request.path)
+        else:
+            return False
