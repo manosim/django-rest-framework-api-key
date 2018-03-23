@@ -13,7 +13,7 @@ class APIKeyMiddleware(object):
     """
 
     def _if_skip_api_key_check(self, request):
-        if request.method == 'OPTIONS' or request.path.find('/api/') < 0:
+        if request.method == 'OPTIONS' or request.path.find('/api/') < 0 or request.path == '/redemptions/api/mobile_topup_callback/':
             return True
 
         u_agent = request.META.get('HTTP_USER_AGENT', "")
