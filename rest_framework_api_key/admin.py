@@ -1,15 +1,15 @@
 from django.contrib import admin
 from django.contrib import messages
-from rest_framework_api_key.models import APIKey
+from rest_framework_api_key.models import APIKey, KeyOwner
 from rest_framework_api_key.helpers import generate_key
 
 
 class ApiKeyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'created', 'modified')
+    list_display = ('id', 'owner', 'name', 'created', 'modified')
 
     fieldsets = (
-        ('Required Information', {'fields': ('name',)}),
-        ('Additional Information', {'fields': ('key_message','path_re')}),
+        ('Required Information', {'fields': ('name', "owner")}),
+        ('Additional Information', {'fields': ('key_message',)}),
     )
     readonly_fields = ('key_message',)
 
@@ -30,3 +30,9 @@ class ApiKeyAdmin(admin.ModelAdmin):
         obj.save()
 
 admin.site.register(APIKey, ApiKeyAdmin)
+
+
+class KeyOwnerAdmin(admin.ModelAdmin):
+    list_display = ('name', 'path_re')
+    
+admin.site.register(KeyOwner, KeyOwnerAdmin)

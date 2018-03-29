@@ -3,6 +3,14 @@ from django.db import models
 import re
 
 
+class KeyOwner(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    path_re = models.CharField(max_length=1024) # an RE that this api-key is validate for
+    
+    def __str__(self):
+        return self.name
+
+
 class APIKey(models.Model):
 
     class Meta:
@@ -15,11 +23,11 @@ class APIKey(models.Model):
 
     name = models.CharField(max_length=50, unique=True)
     key = models.CharField(max_length=40, unique=True)
-    path_re = models.CharField(max_length=1024) # an RE that this api-key is validate for
+    owner = models.ForeignKey(KeyOwner)
 
     def __str__(self):
         return self.name
 
     def is_valid(self, path):
-        pattern = re.compile(self.path_re)
+        pattern = re.compile(self.owner.path_re)
         return pattern.search(path)
