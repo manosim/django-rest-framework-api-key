@@ -26,7 +26,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='apikey',
             name='owner',
-            field=models.ForeignKey(default=0, to='rest_framework_api_key.KeyOwner'),
-            preserve_default=False,
+            field=models.ForeignKey(to='rest_framework_api_key.KeyOwner', null=True),
         ),
     ]

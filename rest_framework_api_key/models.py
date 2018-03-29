@@ -23,7 +23,7 @@ class APIKey(models.Model):
 
     name = models.CharField(max_length=50, unique=True)
     key = models.CharField(max_length=40, unique=True)
-    owner = models.ForeignKey(KeyOwner)
+    owner = models.ForeignKey(KeyOwner, null=True)
 
     def __str__(self):
         return self.name
