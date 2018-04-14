@@ -12,24 +12,24 @@ Authenticate Web APIs made with Django REST Framework
 ### Installation
 
 Install using pip:
-
-    pip install drfapikey
-
+```bash
+pip install drfapikey
+```
 Add 'rest_framework_api_key' to your `INSTALLED_APPS` setting:
-
-    INSTALLED_APPS = (
-        ...
-        'rest_framework_api_key',
-    )
-
+```python
+INSTALLED_APPS = (
+    ...
+    'rest_framework_api_key',
+)
+```
 Finally set the django-rest-framework permissions under your django settings:
-
-    REST_FRAMEWORK = {
-        'DEFAULT_PERMISSION_CLASSES': (
-            'rest_framework_api_key.permissions.HasAPIAccess',
-        )
-    }
-
+```python
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework_api_key.permissions.HasAPIAccess',
+    )
+}
+```
 
 ### Example Request
 
