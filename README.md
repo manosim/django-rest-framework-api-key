@@ -43,6 +43,15 @@ response = requests.get(
 ```
 
 
+### Settings
+
+```python
+API_KEY_CONFIG = {
+    'REQUEST_META_KEY': 'HTTP_API_KEY'
+}
+```
+
+
 ### Tests
     
     pyvenv env
