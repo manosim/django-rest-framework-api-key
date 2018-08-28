@@ -63,3 +63,7 @@ TEMPLATES = [
         },
     },
 ]
+
+API_KEY_CONFIG = {
+    'REQUEST_META_KEY': 'HTTP_API_KEY'
+}
