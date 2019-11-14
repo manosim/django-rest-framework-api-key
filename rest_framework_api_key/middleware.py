@@ -22,9 +22,9 @@ class APIKeyMiddleware(object):
 
         if "skor/" in u_agent.lower() and "tts app" not in u_agent.lower():
             return True
-        
+
         return False
-    
+
     def process_request(self, request):
         """
         Middleware processing method, API key validation happens here.

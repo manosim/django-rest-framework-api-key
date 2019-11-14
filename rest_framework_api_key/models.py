@@ -5,8 +5,9 @@ import re
 
 class KeyOwner(models.Model):
     name = models.CharField(max_length=50, unique=True)
-    path_re = models.CharField(max_length=1024) # an RE that this api-key is validate for
-    
+    # an RE that this api-key is validate for
+    path_re = models.CharField(max_length=1024)
+
     def __str__(self):
         return self.name
 

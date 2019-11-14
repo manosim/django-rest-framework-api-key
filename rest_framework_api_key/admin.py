@@ -26,13 +26,16 @@ class ApiKeyAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         if not obj.key:
             obj.key = generate_key()
-            messages.add_message(request, messages.WARNING, ('The API Key for %s is %s. Please note it since you will not be able to see it again.' % (obj.name, obj.key)))
+            messages.add_message(request, messages.WARNING, (
+                'The API Key for %s is %s. Please note it since you will not be able to see it again.' % (obj.name, obj.key)))
         obj.save()
+
 
 admin.site.register(APIKey, ApiKeyAdmin)
 
 
 class KeyOwnerAdmin(admin.ModelAdmin):
     list_display = ('name', 'path_re')
-    
+
+
 admin.site.register(KeyOwner, KeyOwnerAdmin)
