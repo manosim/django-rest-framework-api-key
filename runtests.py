@@ -24,5 +24,8 @@ def run_tests_coverage():
     if __name__ == "__main__":
         pytest.main(PYTEST_ARGS)
 
+    command = subprocess.call(['coverage', 'html'])
+
+        
 exit_on_failure(flake8_main(FLAKE8_ARGS))
 exit_on_failure(run_tests_coverage())
