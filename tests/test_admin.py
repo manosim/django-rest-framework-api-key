@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.test import TestCase
-from rest_framework_api_key.models import APIKey
+from rest_framework_api_key.models import APIKey, KeyOwner
 from rest_framework_api_key.helpers import generate_key
 
 
@@ -23,9 +23,11 @@ class LoggedInAdminTestCase(TestCase):
 class APIAuthenticatedTestCase(TestCase):
 
     APP_NAME = 'Project Tests'
+    OWNER_NAME = "test"
 
     def setUp(self):
-        self.app_key = APIKey.objects.create(name=self.APP_NAME, key=generate_key())
+        self.api_key_owner = KeyOwner.objects.create(name=self.OWNER_NAME, path_re=".*")
+        self.app_key = APIKey.objects.create(name=self.APP_NAME, key=generate_key(), owner=self.api_key_owner)
         self.header = {'HTTP_API_KEY': self.app_key.key}
 
 
@@ -41,7 +43,7 @@ class AdminTestCase(LoggedInAdminTestCase, APIAuthenticatedTestCase):
     def test_admin_create_app(self):
         self.assertEqual(APIKey.objects.all().count(), 1)
 
-        response = self.client.post(self.add_app_url, data={"name": "Hello"}, follow=True)
+        response = self.client.post(self.add_app_url, data={"name": "Hello", "owner": self.api_key_owner.id}, follow=True)
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Please note it since you will not be able to see it again.")
