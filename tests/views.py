@@ -10,3 +10,12 @@ class TestView(APIView):
 
     def get(self, request):
         return Response({"msg": "Hello World!"}, status=status.HTTP_200_OK)
+
+
+class TestAPIView(APIView):
+    """
+    A dummy view used only for testing.
+    """
+
+    def get(self, request):
+        return Response({"msg": "Hello API!"}, status=status.HTTP_200_OK)
