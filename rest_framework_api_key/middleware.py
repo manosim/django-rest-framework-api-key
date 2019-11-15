@@ -35,12 +35,12 @@ class APIKeyMiddleware(object):
         :rtype: :class:`django.http.HttpResponse`
         """
 
-        api_key = get_key_from_headers(request)
-        api_key_object = APIKey.objects.filter(key=api_key).first()
-        if not api_key_object or not api_key_object.is_valid(request.path):
-            if self._if_skip_api_key_check(request):
-                pass
-            else:
+        if self._if_skip_api_key_check(request):
+            pass
+        else:
+            api_key = get_key_from_headers(request)
+            api_key_object = APIKey.objects.filter(key=api_key).first()
+            if not api_key_object or not api_key_object.is_valid(request.path):
                 raise PermissionDenied('API key missing or invalid.')
 
         request.api_key = api_key_object
