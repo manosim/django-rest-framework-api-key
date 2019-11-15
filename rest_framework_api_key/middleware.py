@@ -20,6 +20,9 @@ class APIKeyMiddleware(object):
         if "Darwin" in u_agent or u_agent.startswith("Mozilla") or u_agent.startswith("Opera"):
             return True
 
+        if u_agent.startswith("ELB-HealthChecker"):
+            return True
+
         if "skor/" in u_agent.lower() and "tts app" not in u_agent.lower():
             return True
 
