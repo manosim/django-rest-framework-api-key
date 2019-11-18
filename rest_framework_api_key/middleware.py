@@ -39,7 +39,13 @@ class APIKeyMiddleware(object):
         """
 
         if self._if_skip_api_key_check(request):
-            request.api_key = None
+            # for backward compatible, we don't check api_key for skor apps, but when they send in one, we find it
+            api_key = get_key_from_headers(request)
+            if api_key:
+                api_key_object = APIKey.objects.filter(key=api_key).first()
+                request.api_key = api_key_object
+            else:
+                request.api_key = None
         else:
             api_key = get_key_from_headers(request)
             api_key_object = APIKey.objects.filter(key=api_key).first()
