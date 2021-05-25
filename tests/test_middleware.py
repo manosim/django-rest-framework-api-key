@@ -55,3 +55,9 @@ class APIMiddlewareTest(APIAuthenticatedTestCase):
 
         self.assertEqual(response.status_code, 403)
         self.assertContains(response, '403 Forbidden', status_code=403)
+
+    def test_move_app_rejected_without_api_key(self):
+        response = self.client.get(reverse("test-api-view"), **{'HTTP_USER_AGENT': 'Skor/9 Move Backend'})
+
+        self.assertEqual(response.status_code, 403)
+        self.assertContains(response, '403 Forbidden', status_code=403)
