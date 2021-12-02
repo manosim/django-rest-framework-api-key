@@ -23,7 +23,7 @@ class APIKeyMiddleware(object):
         if u_agent.startswith("ELB-HealthChecker"):
             return True
 
-        if "skor/" in u_agent.lower() and "tts app" not in u_agent.lower() and "move" not in u_agent.lower():
+        if "skor/" in u_agent.lower() and "tts app" not in u_agent.lower() and "move" not in u_agent.lower() and "myaia" not in u_agent.lower():
             return True
 
         return False
