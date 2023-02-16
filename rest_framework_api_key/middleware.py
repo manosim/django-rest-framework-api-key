@@ -17,7 +17,7 @@ class APIKeyMiddleware(object):
             return True
 
         u_agent = request.META.get('HTTP_USER_AGENT', "")
-        if "Darwin" in u_agent or u_agent.startswith("Mozilla") or u_agent.startswith("Opera"):
+        if "Darwin" in u_agent or u_agent.startswith("Mozilla") or u_agent.startswith("Opera") or u_agent.startswith("Slakbot"):
             return True
 
         if u_agent.startswith("ELB-HealthChecker"):
