@@ -17,7 +17,6 @@ class APIKeyMiddleware(object):
             return True
 
         u_agent = request.META.get('HTTP_USER_AGENT', "")
-        print("<<<<<<<<<<< u_agent = %s" % u_agent)
         
         if "Darwin" in u_agent or u_agent.startswith("Mozilla") or u_agent.startswith("Opera") or u_agent.startswith("Slackbot") or u_agent.startswith("facebook"):
             return True
